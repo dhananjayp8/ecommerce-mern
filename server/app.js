@@ -11,6 +11,9 @@ const PORT=4009
 app.use(cors());
 app.use(express.json());
 
+//admin routes
+const adminAuthRouter=require("./routes/admin/adminAuthRoutes");
+app.use("/adminauth/api",adminAuthRouter);
 app.get("/",(req,res)=>{
     res.status(200).json("server start");
 })
