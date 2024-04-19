@@ -131,7 +131,7 @@ exports.Register = async (req, res) => {
 // login controller
 exports.Login = async (req, res) => {
   const { email, password } = req.body;
-
+  //console.log("result is ", req.body);
   if (!email || !password) {
     res.status(400).json({ error: "all field require" });
   }
@@ -151,6 +151,7 @@ exports.Login = async (req, res) => {
           adminValid,
           token,
         };
+        console.log("result is", result);
         res.status(200).json(result);
       }
     } else {
@@ -158,5 +159,17 @@ exports.Login = async (req, res) => {
     }
   } catch (error) {
     res.status(400).json(error);
+  }
+};
+
+//admin verify controller
+
+exports.Adminverify = async (req, res) => {
+  console.log("req.rootUser", req.rootUser);
+  try {
+    const verifyAdmin = await adminDB.findOne({ _id: req.userid });
+    res.status(200).json(verifyAdmin);
+  } catch (error) {
+    res.status(400).json({ error: "Invalid detail" });
   }
 };
