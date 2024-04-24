@@ -18,6 +18,9 @@ app.get("/", (req, res) => {
   res.status(200).json("server start");
 });
 
+const productsroutes = require("./routes/products/productsroutes");
+app.use("/product/api", productsroutes);
+
 app.listen(PORT, () => {
   console.log(`Server start at ${PORT}`);
 });
