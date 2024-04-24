@@ -10,8 +10,11 @@ router.post(
   adminAuthcontroller.Register
 );
 router.post("/login", adminAuthcontroller.Login);
+router.get("/logout", adminauthenticate, adminAuthcontroller.Logout);
 
 //admin verify
 router.get("/adminverify", adminauthenticate, adminAuthcontroller.Adminverify);
+
+//admin logout
 
 module.exports = router;

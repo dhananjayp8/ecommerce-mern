@@ -173,3 +173,16 @@ exports.Adminverify = async (req, res) => {
     res.status(400).json({ error: "Invalid detail" });
   }
 };
+
+//admin logout controller
+exports.Logout = async (req, res) => {
+  try {
+    req.rootUser.tokens = req.rootUser.tokens.filter((currElement) => {
+      currElement.token !== req.token;
+    });
+    req.rootUser.save();
+    res.status(200).json({ message: "user successfully logout" });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
