@@ -1,5 +1,5 @@
 const categorydb = require("../../model/product/productCategoryModel");
-
+//add category
 exports.AddCategory = async (req, res) => {
   const { categoryname, description } = req.body;
   if (!categoryname || !description) {
@@ -21,6 +21,17 @@ exports.AddCategory = async (req, res) => {
 
       res.status(200).json(addCategory);
     }
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
+//get category
+
+exports.GetCategory = async (req, res) => {
+  try {
+    const getAllcategory = await categorydb.find();
+    res.status(200).json(getAllcategory);
   } catch (error) {
     res.status(400).json(error);
   }
