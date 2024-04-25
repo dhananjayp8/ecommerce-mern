@@ -1,4 +1,5 @@
 const categorydb = require("../../model/product/productCategoryModel");
+const cloudinary = require("../../cloudinary/cloudinary");
 //add category
 exports.AddCategory = async (req, res) => {
   const { categoryname, description } = req.body;
@@ -36,3 +37,5 @@ exports.GetCategory = async (req, res) => {
     res.status(400).json(error);
   }
 };
+
+//add products
